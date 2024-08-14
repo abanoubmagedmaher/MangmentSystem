@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../DTOS/login';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
       private fb:FormBuilder,
       private _LoginService:LoginService,
       private toastr:ToastrService,
-      private router:Router
+      private router:Router,
+      private spinner: NgxSpinnerService
       ) { }
 
   loginForm!:FormGroup
@@ -33,14 +35,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.spinner.show();
     this._LoginService.login(this.loginForm.value).subscribe({
       next: (response) => {
         this.toastr.success("Success",`Login ${response.message}`)
         this.router.navigate(['/tasks'])
+        this.spinner.hide();
         console.log(response)
       },
       error: (error) => {
-        this.toastr.error("Error",`Login Failed ${error.message}`)
+        this.toastr.error("Error",`Login Failed`)
+        this.spinner.hide();
       }
     })
     //console.log(this.loginForm.value);
