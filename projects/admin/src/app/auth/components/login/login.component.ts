@@ -5,6 +5,7 @@ import { Login } from '../../DTOS/login';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LoginResponse } from '../../DTOS/login-response';
 
 @Component({
   selector: 'app-login',
@@ -37,11 +38,12 @@ export class LoginComponent implements OnInit {
   login(){
     this.spinner.show();
     this._LoginService.login(this.loginForm.value).subscribe({
-      next: (response) => {
+      next: (response:LoginResponse) => {
+        localStorage.setItem("token",response.token)
         this.toastr.success("Success",`Login ${response.message}`)
         this.router.navigate(['/tasks'])
         this.spinner.hide();
-        console.log(response)
+        
       },
       error: (error) => {
         this.toastr.error("Error",`Login Failed`)
