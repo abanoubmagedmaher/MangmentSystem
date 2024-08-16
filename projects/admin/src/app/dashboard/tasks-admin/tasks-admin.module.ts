@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TasksAdminRoutingModule } from './tasks-admin-routing.module';
 import { AddTasksComponent } from './components/add-tasks/add-tasks.component';
 import { ListTasksComponent } from './components/list-tasks/list-tasks.component';
+import { MaterialModule } from '../../material/material.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ListTasksComponent } from './components/list-tasks/list-tasks.component
   ],
   imports: [
     CommonModule,
-    TasksAdminRoutingModule
+    TasksAdminRoutingModule,
+    MaterialModule
   ]
 })
 export class TasksAdminModule { }
