@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-  
-    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    CoreModule
     
   ],
   providers: [],

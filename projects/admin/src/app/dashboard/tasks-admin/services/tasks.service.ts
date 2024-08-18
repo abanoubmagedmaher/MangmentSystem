@@ -12,11 +12,11 @@ export class TasksService {
 
 
   getAllTasks():Observable<any>{
-    let headers= new HttpHeaders()
-    headers.append(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token')
-    );
-    return this.http.get(`https://localhost:7139/api/Patients/GetAllPatients`,{headers});
+    // let headers= new HttpHeaders()
+    // headers.append(
+    //   'Authorization',
+    //   'Bearer ' + localStorage.getItem('token')
+    // );
+    return this.http.get(`https://localhost:7139/api/Patients/GetAllPatients`);
   }
 }
