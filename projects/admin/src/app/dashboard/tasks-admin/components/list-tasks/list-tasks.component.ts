@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TasksService } from '../../services/tasks.service';
+import { AddTasksComponent } from '../add-tasks/add-tasks.component';
 
 export interface PeriodicElement {
   title: string;
@@ -44,7 +45,8 @@ export class ListTasksComponent implements OnInit {
   ]
   constructor(public dialog: MatDialog ,
     private fb:FormBuilder,
-    private services:TasksService) { }
+    private services:TasksService
+  ) { }
 
   ngOnInit(): void {
     this.getAllTasks();
@@ -61,6 +63,17 @@ export class ListTasksComponent implements OnInit {
     })
   }
 
+  AddTask()
+  {
+      const dialogRef = this.dialog.open(AddTasksComponent, {
+        width: '750px',
+       
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+       
+      });
+    }
 
+  
 }
-
